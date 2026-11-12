@@ -1,4 +1,4 @@
-# apellido-post1-u4
+# becerra-post1-u4
 
 ## Descripción
 
@@ -17,7 +17,7 @@ Laboratorio de la Unidad 4 de Arquitectura de Computadores (UFPS). El repositori
 ## Estructura
 
 ```
-apellido-post1-u4/
+becerra-post1-u4/
 ├── programa.asm     Parte 1
 ├── macros.asm       Parte 2: biblioteca de macros
 ├── programa2.asm    Parte 2: programa integrador
@@ -30,7 +30,7 @@ apellido-post1-u4/
 Dentro de DOSBox:
 
 ```
-Z:\> mount C C:\ruta\a\apellido-post1-u4
+Z:\> mount C C:\ruta\a\becerra-post1-u4
 Z:\> C:
 
 ; Parte 1
@@ -111,7 +111,9 @@ Durante el desarrollo se identificaron cuatro detalles de la guía que impedían
 
 | Captura | Descripción |
 |---|---|
-| `capturas/01_compilacion_parte1.png` | Ensamblado y enlazado de `programa.asm` |
-| `capturas/02_ejecucion_parte1.png` | Ejecución de `programa.exe` con la línea de 40 "=" |
-| `capturas/03_listado_macros.png` | `programa2.lst` mostrando la expansión de `print_str`, `repetir_str` y `fin_dos` |
-| `capturas/04_ejecucion_parte2.png` | Ejecución completa de `programa2.exe`, incluido el bloque `%rep` y `comparar_menor_o_igual` |
+| `capturas/01_compilacion.png` | Ensamblado de `programa.asm` y `programa2.asm` (con listado `-l`) sin errores ni advertencias |
+| `capturas/02_ejecucion_parte1.png` | Ejecución de la Parte 1 en DOSBox, con la línea de 40 "=" generada con `TIMES` |
+| `capturas/03_listado_macros.png` | Extracto de `programa2.lst` con las expansiones de `repetir_str`, `bloque_decorativo` (`%rep`) y `fin_dos` |
+| `capturas/04_ejecucion_parte2.png` | Ejecución completa de la Parte 2 en DOSBox, incluidos el bloque `%rep` y `comparar_menor_o_igual` |
+
+Las capturas de ejecución corresponden a una compilación de verificación en formato `.COM` (`nasm -f bin`, con `org 100h`) del mismo código fuente, ejecutada en DOSBox 0.74; la salida es idéntica a la del `.exe` enlazado con ALINK.
