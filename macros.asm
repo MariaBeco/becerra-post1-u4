@@ -85,13 +85,3 @@
     pop  ax                 ; restaurar AX
 %endmacro
 
-; -----------------------------------------------------------------------------
-; bloque_decorativo (Paso 7): imprime separador_corto N veces, desenrollado en
-; tiempo de ensamblado con %rep. No usa CX ni LOOP ni etiquetas.
-; %1 = numero de copias (constante conocida al ensamblar)
-; -----------------------------------------------------------------------------
-%macro bloque_decorativo 1
-    %rep %1
-    print_str separador_corto    ; cada copia es codigo independiente
-    %endrep
-%endmacro
