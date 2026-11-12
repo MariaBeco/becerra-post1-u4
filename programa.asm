@@ -13,11 +13,17 @@ CR          EQU  0Dh            ; Carriage Return (retorno de carro)
 LF          EQU  0Ah            ; Line Feed (salto de linea)
 TERMINADOR  EQU  24h            ; "$": terminador de cadena para INT 21h/09h
 ITERACIONES EQU  5              ; numero de elementos de tabla_bytes
+ANCHO_LINEA EQU  40             ; ancho de la linea decorativa (Paso 7 y 8)
 
 ; -- Datos inicializados ------------------------------------------------------
 section .data
     bienvenida  db "=== Laboratorio NASM - Unidad 4 ===", CR, LF, TERMINADOR
     separador   db "----------------------------------------", CR, LF, TERMINADOR
+
+    ; Paso 7: linea de 40 signos "=" generada por NASM en tiempo de ensamblado
+    linea_gruesa:
+        TIMES ANCHO_LINEA DB '='     ; repite el byte '=' ANCHO_LINEA veces
+                          DB CR, LF, TERMINADOR
 
     etiqueta_a  db "Variable A (word):  ", TERMINADOR
     etiqueta_b  db "Variable B (dword): ", TERMINADOR
@@ -112,6 +118,11 @@ imprimir_tabla:
     ; Mensaje final
     mov  ah, 09h
     mov  dx, fin_msg
+    int  21h
+
+    ; === Paso 7: linea decorativa generada con TIMES ===
+    mov  ah, 09h
+    mov  dx, linea_gruesa
     int  21h
 
     ; Terminar el programa
